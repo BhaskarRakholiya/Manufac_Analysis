@@ -1,24 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useMemo } from "react";
+import { groupWinesByAlcohol } from "./utils/commonFunctions";
+import Table from "./components/Table";
+import { IDENTIFICATION_KEY, GAMMA } from "./utils/constants";
 
 function App() {
+  const formattedAlcoholByClass = useMemo(() => groupWinesByAlcohol(), []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Table data={formattedAlcoholByClass} operationKey={IDENTIFICATION_KEY} />
+      <Table data={formattedAlcoholByClass} operationKey={GAMMA} />
     </div>
   );
 }
