@@ -47,8 +47,13 @@ td {
 table {
   width: 100%;
   margin-bottom: 20px;
+  table-layout: fixed;
 }
 
 .side-heading {
   font-weight: bold;
+}
+
+td {
+  overflow-wrap: break-word;
 }
