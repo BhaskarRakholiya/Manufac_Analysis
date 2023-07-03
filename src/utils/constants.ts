@@ -1,7 +1,7 @@
 export const IDENTIFICATION_KEY = "Flavanoids";
 export const GAMMA = "Gamma";
 
-export const wineData = [
+export const WINE_DATA = [
   {
     Alcohol: 1,
     "Malic Acid": 14.23,

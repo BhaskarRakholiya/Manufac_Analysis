@@ -1,10 +1,10 @@
-import { wineData } from "./constants";
+import { WINE_DATA } from "./constants";
 import { WineData } from "./types";
 
 export function groupWinesByAlcohol(): Record<number, WineData[]> {
   const wineObject: Record<number, WineData[]> = {};
 
-  for (const wine of wineData) {
+  for (const wine of WINE_DATA) {
     const alcoholLevel: number = wine.Alcohol;
 
     if (wineObject.hasOwnProperty(alcoholLevel)) {
