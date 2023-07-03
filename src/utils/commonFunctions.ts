@@ -8,7 +8,7 @@ export function groupWinesByAlcohol(): Record<number, WineData[]> {
     const alcoholLevel: number = wine.Alcohol;
 
     if (wineObject.hasOwnProperty(alcoholLevel)) {
-      wineObject[alcoholLevel].push(wine);
+      wineObject[alcoholLevel].push(createGamma(wine));
     } else {
       wineObject[alcoholLevel] = [createGamma(wine)];
     }
@@ -18,9 +18,9 @@ export function groupWinesByAlcohol(): Record<number, WineData[]> {
 }
 
 function createGamma(wine: WineData): WineData {
-  const ash = parseFloat(wine["Ash"]?.toString());
-  const hue = parseFloat(wine["Hue"]?.toString());
-  const magnesium = parseFloat(wine["Magnesium"]?.toString());
+  const ash = Number(wine["Ash"]);
+  const hue = Number(wine["Hue"]);
+  const magnesium = Number(wine["Magnesium"]);
 
   if (!isNaN(ash) && !isNaN(hue) && !isNaN(magnesium)) {
     const gamma = (ash * hue) / magnesium;
@@ -31,7 +31,7 @@ function createGamma(wine: WineData): WineData {
 
 export function calculateMean(data: WineData[], key: string): string {
   const flavanoidsValues: number[] = data.map((wine: WineData) => {
-    const flavanoids = parseFloat(wine[key]?.toString());
+    const flavanoids = Number(wine[key]);
     return isNaN(flavanoids) ? 0 : flavanoids;
   });
   if (flavanoidsValues.length === 0) {
@@ -80,7 +80,7 @@ export function calculateMedian(data: WineData[], key: string): string {
   const values: number[] = [];
 
   for (const wine of data) {
-    const value = parseFloat(wine[key]?.toString());
+    const value = Number(wine[key]);
     if (!isNaN(value)) {
       values.push(value);
     }
